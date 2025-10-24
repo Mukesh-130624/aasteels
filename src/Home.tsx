@@ -64,10 +64,26 @@ const Home: React.FC = () => {
   ];
 
   const dealers = [
-    { name: "Durashine", brand: "Tata BlueScope Steel" },
-    { name: "Ultratech", brand: "The Engineer's Choice" },
-    { name: "JSW", brand: "JSW Steel" },
-    { name: "Tata Tiscon", brand: "Joy of Building" },
+    {
+      name: "Durashine",
+      brand: "Tata BlueScope Steel",
+      logo: "/logo/durashine.png", // add the logo path
+    },
+    {
+      name: "Ultratech",
+      brand: "The Engineer's Choice",
+      logo: "/logo/ultratech.png",
+    },
+    {
+      name: "JSW",
+      brand: "JSW Steel",
+      logo: "/logo/jswsteel.png",
+    },
+    {
+      name: "Tata Tiscon",
+      brand: "Joy of Building",
+      logo: "/logo/tiscon.jpg",
+    },
   ];
 
   const clients = [
@@ -166,6 +182,15 @@ const Home: React.FC = () => {
                 key={index}
                 className="text-center p-6 rounded-xl bg-gradient-to-br from-gray-50 to-white shadow-md hover:shadow-xl transition border-l-4 border-yellow-600"
               >
+                {/* Logo */}
+                <div className="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden border border-yellow-600/30 shadow flex items-center justify-center">
+                  <img
+                    src={dealer.logo}
+                    alt={dealer.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
                 <h3 className="font-bold text-lg text-gray-900 mb-2">
                   {dealer.name}
                 </h3>
@@ -195,30 +220,39 @@ const Home: React.FC = () => {
             {products.map((product, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center bg-gradient-to-br from-gray-800 to-gray-900 p-5 rounded-lg shadow-lg hover:shadow-2xl transition border border-yellow-600/30 hover:border-yellow-600 cursor-pointer"
-                onClick={() =>
-                  navigate(
-                    `/product/${product.name
-                      .toLowerCase()
-                      .replace(/[&/]+/g, "and") // replace & and / with "and"
-                      .replace(/\s+/g, "-")}` // replace spaces with -
-                  )
-                }
+                className="flex flex-col items-center text-center bg-gradient-to-br from-gray-800 to-gray-900 p-5 rounded-lg shadow-lg hover:shadow-2xl transition border border-yellow-600/30 hover:border-yellow-600"
               >
+                {/* Product Image */}
                 <div className="w-64 h-64 mb-4 rounded-lg overflow-hidden border-2 border-yellow-600 shadow-md flex justify-center items-center bg-white">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-64 h-64 object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
-                <div className="flex items-center justify-center space-x-2">
+                {/* Product Name */}
+                <div className="flex items-center justify-center space-x-2 mb-4">
                   <CheckCircle className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                   <span className="text-gray-100 font-medium">
                     {product.name}
                   </span>
                 </div>
+
+                {/* View More Button */}
+                <button
+                  onClick={() =>
+                    navigate(
+                      `/product/${product.name
+                        .toLowerCase()
+                        .replace(/[&/]+/g, "and")
+                        .replace(/\s+/g, "-")}`
+                    )
+                  }
+                  className="bg-yellow-600 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded-lg transition transform hover:scale-105 shadow"
+                >
+                  View More
+                </button>
               </div>
             ))}
           </div>
