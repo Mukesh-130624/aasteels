@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes scrollInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-infinite {
+  display: flex;
+  gap: 3rem; /* increase space between logos */
+  width: max-content;
+  animation: scrollInfinite 25s linear infinite;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #facc15; /* yellow-500 */
+  color: black;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  z-index: 10;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+.arrow-btn:hover {
+  background-color: #f59e0b; /* yellow-400 */
+}
+.arrow-left {
+  left: 0.5rem;
+}
+.arrow-right {
+  right: 0.5rem;
+}

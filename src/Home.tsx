@@ -11,43 +11,20 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
-  const [startIdx, setStartIdx] = React.useState(0);
-  const [visibleCount, setVisibleCount] = React.useState(4);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const updateVisibleCount = () => {
-      if (window.innerWidth < 640) setVisibleCount(1);
-      else if (window.innerWidth < 1024) setVisibleCount(2);
-      else if (window.innerWidth < 1280) setVisibleCount(3);
-      else setVisibleCount(4);
-    };
-    updateVisibleCount();
-    window.addEventListener("resize", updateVisibleCount);
-    return () => window.removeEventListener("resize", updateVisibleCount);
-  }, []);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
 
-  const handleNext = () => {
-    setStartIdx((prev) =>
-      prev + visibleCount >= clients.length ? 0 : prev + 1
-    );
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.offsetWidth / 5; // scroll by 1/5 of visible area
+      if (direction === "left") {
+        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
   };
-
-  const handlePrev = () => {
-    setStartIdx((prev) =>
-      prev === 0 ? clients.length - visibleCount : prev - 1
-    );
-  };
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setStartIdx((prev) =>
-        prev + visibleCount >= clients.length ? 0 : prev + 1
-      );
-    }, 3000); // change slide every 3 seconds
-
-    return () => clearInterval(interval); // cleanup on unmount
-  }, [visibleCount]);
 
   const products = [
     { name: "Tor Steel", image: "/products/torsteel.jpg" },
@@ -264,7 +241,6 @@ const Home: React.FC = () => {
         className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 to-black"
       >
         <div className="container mx-auto px-4">
-          {/* Section Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-yellow-500">
               Our Clients
@@ -274,53 +250,46 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Carousel Container */}
-          <div className="relative max-w-6xl mx-auto flex items-center justify-center">
-            {/* Left Button */}
-            <button
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-yellow-600 text-black p-2 sm:p-3 rounded-full shadow hover:bg-yellow-500 z-10"
-              onClick={handlePrev}
-              aria-label="Previous"
+          <div className="scroll-wrapper">
+            {/* Left Arrow */}
+            <div
+              className="arrow-btn arrow-left"
+              onClick={() => handleScroll("left")}
             >
               &#8592;
-            </button>
-
-            {/* Slider View */}
-            <div className="overflow-hidden w-full">
-              <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{
-                  transform: `translateX(-${startIdx * (100 / visibleCount)}%)`,
-                }}
-              >
-                {clients.map((client, index) => (
-                  <div
-                    key={client.name + index}
-                    className="flex flex-col items-center justify-center flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 py-6"
-                  >
-                    <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden bg-white border border-yellow-600/40 shadow-lg flex items-center justify-center">
-                      <img
-                        src={client.logo}
-                        alt={client.name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <h3 className="font-semibold text-gray-100 text-center mt-3 text-sm sm:text-base md:text-lg">
-                      {client.name}
-                    </h3>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* Right Button */}
-            <button
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-yellow-600 text-black p-2 sm:p-3 rounded-full shadow hover:bg-yellow-500 z-10"
-              onClick={handleNext}
-              aria-label="Next"
+            {/* Right Arrow */}
+            <div
+              className="arrow-btn arrow-right"
+              onClick={() => handleScroll("right")}
             >
               &#8594;
-            </button>
+            </div>
+
+            <div
+              ref={scrollRef}
+              className="scroll-infinite"
+              style={{ gap: "3rem" }} // gap between logos
+            >
+              {[...clients, ...clients].map((client, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 flex flex-col items-center justify-center w-32 md:w-36 lg:w-40 px-4 py-6"
+                >
+                  <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden bg-white border border-yellow-600/40 shadow-lg flex items-center justify-center">
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <h3 className="font-semibold text-gray-100 text-center mt-3 text-sm sm:text-base md:text-lg">
+                    {client.name}
+                  </h3>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
