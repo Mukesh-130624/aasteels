@@ -4,10 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Home";
 import { ProductDetail } from "./ProductDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       {/* ✅ Header always visible */}
       <Header />
 

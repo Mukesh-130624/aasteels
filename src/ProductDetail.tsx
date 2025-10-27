@@ -11,11 +11,11 @@ interface Product {
 
 const products: Product[] = [
   {
-    name: "Tor Steel",
+    name: "TMT Steel",
     image: "/products/torsteel.jpg",
-    description: "High-quality Tor Steel for construction.",
-    detail:
-      "Tor steel, also known as Cold Twisted Deformed (CTD) steel, was a pioneering product in the construction industry. After undergoing a heat treatment, these bars were cold-twisted and deformed to create surface irregularities. This process significantly increased the steel's yield strength and improved its bonding with concrete, preventing slippage and providing greater stability. Though newer technologies like TMT bars are now the industry standard, Tor steel played a vital role in advancing reinforced concrete construction. ",
+    description:
+      "Authorized supplier of premium-quality TMT steel for construction, sourced from leading brands like Tata Tiscon and JSW Neo Steel.",
+    detail: `TMT, or Thermo-Mechanically Treated, steel is a high-strength reinforcement bar with a unique manufacturing process that results in a bar with a tough outer shell and a soft inner core. This dual-core structure gives it the perfect blend of strength and flexibility, making it the superior option for all concrete structures.`,
   },
   {
     name: "Angles",
@@ -25,7 +25,7 @@ const products: Product[] = [
       "Steel angles are L-shaped structural steel components, also known as 'angle iron,' formed by rolling a single piece of steel into a 90-degree bend. Valued for their strength, durability, and versatility, they are one of the most widely used structural materials in construction and fabrication. ",
   },
   {
-    name: "Patti",
+    name: "MS Flats / Patti",
     image: "/products/patti.jpg",
     description: "Durable steel patti for industrial use.",
     detail:
@@ -58,9 +58,9 @@ const products: Product[] = [
     This combination of steel and concrete creates a framework that can withstand heavy loads, temperature changes, and seismic forces, ensuring the long-term stability and safety of a structure. `,
   },
   {
-    name: "MS & GI Pipe/Sheets",
+    name: "MS & GI,GP Pipe/Sheets",
     image: "/products/pipesheets.jpg",
-    description: "MS and GI pipes/sheets for plumbing and construction.",
+    description: "MS and GI,GP pipes/sheets for plumbing and construction.",
     detail: `Mild Steel is a versatile and affordable low-carbon steel, containing less than 0.25% carbon, which makes it highly malleable, ductile, and strong.
     MS Sheets: These flat sheets are cost-effective and easy to work with, making them the backbone of many industries. Applications include construction (roofing, cladding, framework), automotive bodies, appliance manufacturing, and machinery components. 
     Galvanized Iron is a type of steel coated with a layer of zinc to protect it from rust and corrosion. The zinc coating provides a durable, weather-resistant finish, making it ideal for use in wet or humid environments. 

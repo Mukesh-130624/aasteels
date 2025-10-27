@@ -27,13 +27,13 @@ const Home: React.FC = () => {
   };
 
   const products = [
-    { name: "Tor Steel", image: "/products/torsteel.jpg" },
+    { name: "TMT Steel", image: "/products/torsteel.jpg" },
     { name: "Angles", image: "/products/angles.jpg" },
-    { name: "Patti", image: "/products/patti.jpg" },
+    { name: "MS Flats / Patti", image: "/products/patti.jpg" },
     { name: "Channel", image: "/products/channel.jpg" },
     { name: "Beam", image: "/products/beam.jpg" },
     { name: "Bars", image: "/products/bars.jpg" },
-    { name: "MS & GI Pipe/Sheets", image: "/products/pipesheets.jpg" },
+    { name: "MS & GI,GP Pipe/Sheets", image: "/products/pipesheets.jpg" },
     { name: "JSW/Tata Profile Sheets", image: "/products/profilesheets.jpg" },
     { name: "Water Tanks", image: "/products/watertank.jpg" },
     { name: "Cement - Ultratech, Ambuja, ACC", image: "/products/cement.jpg" },
