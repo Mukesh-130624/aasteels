@@ -128,6 +128,7 @@ export const ProductDetail: React.FC = () => {
           <img
             src={product.image}
             alt={product.name}
+            loading="lazy"
             className="max-w-[90%] h-auto object-contain rounded-md"
           />
         </div>

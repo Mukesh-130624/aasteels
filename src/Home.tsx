@@ -164,6 +164,7 @@ const Home: React.FC = () => {
                   <img
                     src={dealer.logo}
                     alt={dealer.name}
+                    loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -204,6 +205,7 @@ const Home: React.FC = () => {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -281,6 +283,7 @@ const Home: React.FC = () => {
                     <img
                       src={client.logo}
                       alt={client.name}
+                      loading="lazy"
                       className="w-full h-full object-contain"
                     />
                   </div>
