@@ -103,7 +103,7 @@ const products: Product[] = [
   },
 ];
 
-export const ProductDetail: React.FC = () => {
+const ProductDetail: React.FC = () => {
   const { productName } = useParams<{ productName: string }>();
 
   const product = products.find(
@@ -154,3 +154,5 @@ export const ProductDetail: React.FC = () => {
     </section>
   );
 };
+
+export default ProductDetail;
